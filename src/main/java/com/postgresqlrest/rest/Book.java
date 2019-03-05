@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Books")
+@Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Long id;
     @Basic
-    @Column(name = "bookname")
+    @Column(name = "book_name")
     private String bookname;
 
     public Long getId() {
