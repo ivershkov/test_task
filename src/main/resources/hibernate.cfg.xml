@@ -4,11 +4,9 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-
     <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.username">postgres</property>
-    <mapping class="com.restpostgresql.resttest.BooksEntity"/>
+    <mapping class="com.postgresqlrest.rest.Book"/>
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

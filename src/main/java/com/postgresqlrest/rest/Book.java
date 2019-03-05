@@ -1,26 +1,27 @@
-package com.restpostgresql.resttest;
+package com.postgresqlrest.rest;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Books", schema = "public")
-public class BooksEntity {
-    private long id;
+@Table(name = "Books")
+public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Id")
+    private Long id;
+    @Basic
+    @Column(name = "bookname")
     private String bookname;
 
-    @Id
-    @Column(name = "Id")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "bookname")
     public String getBookname() {
         return bookname;
     }
@@ -29,13 +30,18 @@ public class BooksEntity {
         this.bookname = bookname;
     }
 
-    @Override
+/*    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BooksEntity that = (BooksEntity) o;
+        Book that = (Book) o;
         return id == that.id &&
                 Objects.equals(bookname, that.bookname);
+    }*/
+
+    @Override
+    public String toString() {
+        return String.format("name=%s", bookname);
     }
 
     @Override

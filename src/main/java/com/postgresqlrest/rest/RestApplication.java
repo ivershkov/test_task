@@ -1,13 +1,13 @@
-package com.restpostgresql.resttest;
+package com.postgresqlrest.rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ResttestApplication {
+public class RestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ResttestApplication.class, args);
+        SpringApplication.run(RestApplication.class, args);
     }
 
 }
