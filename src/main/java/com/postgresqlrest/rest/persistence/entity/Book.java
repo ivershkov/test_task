@@ -1,4 +1,4 @@
-package com.postgresqlrest.rest;
+package com.postgresqlrest.rest.persistence.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -13,6 +13,51 @@ public class Book {
     @Basic
     @Column(name = "book_name")
     private String bookname;
+    @Basic
+    @Column(name = "isbn")
+    private String isbn;
+    @Basic
+    @Column(name = "theme")
+    private String theme;
+    @Basic
+    @Column(name = "author_id")
+    private Long authorId;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id", insertable = false, updatable = false)
+    private Author author;
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
     public Long getId() {
         return id;
@@ -30,14 +75,14 @@ public class Book {
         this.bookname = bookname;
     }
 
-/*    @Override
+   @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book that = (Book) o;
         return id == that.id &&
                 Objects.equals(bookname, that.bookname);
-    }*/
+    }
 
     @Override
     public String toString() {
