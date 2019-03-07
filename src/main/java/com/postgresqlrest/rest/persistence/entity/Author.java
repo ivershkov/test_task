@@ -1,5 +1,10 @@
 package com.postgresqlrest.rest.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
@@ -26,7 +31,9 @@ public class Author {
     @Basic
     @Column(name = "birth_date")
     private Date birthDate;
+
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private Set<Book> books = new HashSet<>();
 
     public Set<Book> getBooks() {

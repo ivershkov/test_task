@@ -11,6 +11,6 @@ import javax.transaction.Transactional;
 public interface BookRepository extends JpaRepository<Book, String> {
     public Book findBookById(Long id);
     public Book findBookByBookname(String name);
-    public Book findBooksByAuthorFirstName(String name);
+    public Iterable<Book> findBooksByAuthorFirstName(String name);
     void deleteBookByBookname(String name);
 }

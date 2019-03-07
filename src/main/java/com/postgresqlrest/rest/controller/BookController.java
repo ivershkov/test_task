@@ -20,8 +20,9 @@ public class BookController {
     public Book find(@RequestParam("name") String name) { return repository.findBookByBookname(name); }
 
     @GetMapping(path = "/findByAuthor")
-    public Book findByAuthor(@RequestParam("firstName") String name) { return repository.findBooksByAuthorFirstName(name); }
+    public Iterable<Book> findByAuthor(@RequestParam("firstName") String name) { return repository.findBooksByAuthorFirstName(name); }
 
+    //Добавить параметры для других полей таблицы
     @GetMapping(path="/create")
     public Book create(@RequestParam("name") String name) {
           Book book = new Book();
@@ -35,6 +36,7 @@ public class BookController {
         return "Successfully deleted";
     }
 
+    //Добавить параметры для других полей таблицы
     @GetMapping(path="/update")
     public String update(@RequestParam("id") Long id, @RequestParam("name") String name)
     {
