@@ -23,8 +23,11 @@ public class AuthorController {
     @GetMapping(path = "/findById")
     public Author findById(@RequestParam("id") Long id) {return repository.findAuthorById(id);}
 
-/*    @GetMapping(path = "/findByTheme")
-    public Iterable<Author> findByTheme(@RequestParam("theme") String theme) { return repository.findAuthorsByBookTheme(theme);}*/
+    @GetMapping(path = "/findByTheme")
+    public Iterable<Author> findByTheme(@RequestParam("theme") String theme) { return repository.findAuthorsByBookTheme(theme);}
+
+    @GetMapping(path = "/findByLastName")
+    public Iterable<Author> findByLastName(@RequestParam("lastName") String lastName){ return repository.findAuthorsByLastName(lastName);}
 
     @GetMapping(path="/create")
     public Author create(@RequestParam("firstName") String firstName, @RequestParam("midName") String midName,
@@ -43,7 +46,6 @@ public class AuthorController {
         return "Successfully deleted";
     }
 
-    //Добавить параметры для других полей таблицы
     @GetMapping(path ="/update")
     public String update(@RequestParam("id") Long id,@RequestParam("firstName") String firstName, @RequestParam("midName") String midName,
                          @RequestParam("lastName") String lastName, @RequestParam("birthDate") Date birthDate){
