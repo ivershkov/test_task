@@ -1,5 +1,7 @@
 package com.postgresqlrest.rest.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -24,6 +26,7 @@ public class Book {
     private Long authorId;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "author_id", insertable = false, updatable = false)
     private Author author;
 

@@ -16,21 +16,26 @@ public class BookController {
     @GetMapping("/findAll")
     public Iterable<Book> findAll() { return repository.findAll(); }
 
-    @GetMapping(path = "/findBy")
+    @GetMapping(path = "/findByName")
     public Book find(@RequestParam("name") String name) { return repository.findBookByBookname(name); }
 
     @GetMapping(path = "/findByAuthor")
-    public Iterable<Book> findByAuthor(@RequestParam("firstName") String name) { return repository.findBooksByAuthorFirstName(name); }
+    public Iterable<Book> findByAuthor(@RequestParam("firstName") String firstName, @RequestParam("midName") String midName, @RequestParam("lastName") String lastName) {
+        return repository.findBooksByAuthorFirstNameAndAuthorMidNameAndAuthorLastName(firstName,midName,lastName); }
 
     //Добавить параметры для других полей таблицы
     @GetMapping(path="/create")
-    public Book create(@RequestParam("name") String name) {
+    public Book create(@RequestParam("name") String name,@RequestParam("isbn") String isbn,
+                       @RequestParam("theme") String theme,@RequestParam("authorId") Long authorId) {
           Book book = new Book();
           book.setBookname(name);
+          book.setIsbn(isbn);
+          book.setTheme(theme);
+          book.setAuthorId(authorId);
           return repository.save(book);
     }
 
-    @GetMapping(path = "/deleteBy")
+    @GetMapping(path = "/delete")
     public String delete(@RequestParam("name") String name) {
         repository.deleteBookByBookname(name);
         return "Successfully deleted";
