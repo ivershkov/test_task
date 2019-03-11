@@ -34,13 +34,13 @@ public class Author {
 
     @OneToMany(mappedBy = "author")
     @JsonIgnore
-    private Set<Book> books = new HashSet<>();
+    private Set<Authorship> books = new HashSet<>();
 
-    public Set<Book> getBooks() {
+    public Set<Authorship> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(Set<Authorship> books) {
         this.books = books;
     }
 

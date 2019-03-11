@@ -4,10 +4,9 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-    <changeSet id="initTables" author="ivershkov">
-        <sqlFile path="src/main/resources/liquibase/sql/create_authors.sql"/>
-        <sqlFile path="src/main/resources/liquibase/sql/create_books.sql"/>
-        <sqlFile path="src/main/resources/liquibase/sql/create_sequence.sql"/>
+    <changeSet id="initUpdateTables" author="ivershkov">
+        <sqlFile path="src/main/resources/liquibase/sql/create_authorship.sql"/>
+        <sqlFile path="src/main/resources/liquibase/sql/update_books.sql"/>
         <!--  <sqlFile path="src/main/resources/sql/oracle/table_trigger.sql"/> -->
     </changeSet>
 </databaseChangeLog>

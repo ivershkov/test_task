@@ -6,9 +6,10 @@
   <session-factory>
     <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
-    <mapping class="com.postgresqlrest.rest.persistence.entity.Book"/>
+      <mapping class="com.postgresqlrest.rest.persistence.entity.Book"/>
     <mapping class="com.postgresqlrest.rest.persistence.entity.Author"/>
-    <!-- <property name="connection.username"/> -->
+      <mapping class="com.postgresqlrest.rest.persistence.entity.Authorship"/>
+      <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->

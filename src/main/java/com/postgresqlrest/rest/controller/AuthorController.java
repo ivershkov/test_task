@@ -23,8 +23,8 @@ public class AuthorController {
     @GetMapping(path = "/findById")
     public Author findById(@RequestParam("id") Long id) {return repository.findAuthorById(id);}
 
-    @GetMapping(path = "/findByTheme")
-    public Iterable<Author> findByTheme(@RequestParam("theme") String theme) { return repository.findAuthorsByBookTheme(theme);}
+  //  @GetMapping(path = "/findByTheme")
+  //  public Iterable<Author> findByTheme(@RequestParam("theme") String theme) { return repository.findAuthorsByBookTheme(theme);}
 
     @GetMapping(path = "/findByLastName")
     public Iterable<Author> findByLastName(@RequestParam("lastName") String lastName){ return repository.findAuthorsByLastName(lastName);}

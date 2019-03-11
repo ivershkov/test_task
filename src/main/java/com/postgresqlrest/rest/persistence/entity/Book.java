@@ -3,7 +3,9 @@ package com.postgresqlrest.rest.persistence.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -21,29 +23,17 @@ public class Book {
     @Basic
     @Column(name = "theme")
     private String theme;
-    @Basic
-    @Column(name = "author_id")
-    private Long authorId;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "author")
     @JsonIgnore
-    @JoinColumn(name = "author_id", insertable = false, updatable = false)
-    private Author author;
+    private Set<Authorship> authors = new HashSet<>();
 
-    public Author getAuthor() {
-        return author;
+    public Set<Authorship> getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public Long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthors(Set<Authorship> authors) {
+        this.authors = authors;
     }
 
     public String getTheme() {

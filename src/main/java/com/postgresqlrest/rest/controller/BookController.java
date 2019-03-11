@@ -5,6 +5,8 @@ import com.postgresqlrest.rest.persistence.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping(path = "/books")
@@ -20,8 +22,10 @@ public class BookController {
     public Iterable<Book> find(@RequestParam("name") String name) { return repository.findBookByBookname(name); }
 
     @GetMapping(path = "/findByAuthor")
-    public Iterable<Book> findByAuthor(@RequestParam("firstName") String firstName, @RequestParam("midName") String midName, @RequestParam("lastName") String lastName) {
-        return repository.findBooksByAuthorFirstNameAndAuthorMidNameAndAuthorLastName(firstName,midName,lastName); }
+    public Iterable<Book> findByAuthor(@RequestParam("lastName")String lastName){ return repository.findBooksByLastName(lastName);}
+    //public List<Book> findByAuthor(@RequestParam("id") Long id){return repository.findBooksByAuthors(id);}
+  //  public Iterable<Book> findByAuthor(@RequestParam("firstName") String firstName, @RequestParam("midName") String midName, @RequestParam("lastName") String lastName) {
+ //       return repository.findBooksByAuthorFirstNameAndAuthorMidNameAndAuthorLastName(firstName,midName,lastName); }
 
     @GetMapping(path="/create")
     public Book create(@RequestParam("name") String name,@RequestParam("isbn") String isbn,
@@ -30,7 +34,7 @@ public class BookController {
           book.setBookname(name);
           book.setIsbn(isbn);
           book.setTheme(theme);
-          book.setAuthorId(authorId);
+          //book.setAuthorId(authorId);
           return repository.save(book);
     }
 
@@ -48,7 +52,7 @@ public class BookController {
         book.setBookname(name);
         book.setIsbn(isbn);
         book.setTheme(theme);
-        book.setAuthorId(authorId);
+        //book.setAuthorId(authorId);
         repository.save(book);
         return "Successfully updated";
     }
