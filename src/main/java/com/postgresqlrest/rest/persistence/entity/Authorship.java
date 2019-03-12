@@ -8,6 +8,7 @@ import java.util.Objects;
 @Entity
 public class Authorship {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
 

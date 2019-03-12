@@ -12,18 +12,11 @@ import java.util.List;
 @Transactional
 public interface BookRepository extends JpaRepository<Book, String> {
     public Book findBookById(Long id);
-
     public Iterable<Book> findBookByBookname(String name);
-
     @Query("select b from Book b where id in " +
-            "(select a.bookId from Authorship a join Author b on a.authorId=b.id where b.lastName=?1)")
-    public Iterable<Book> findBooksByLastName(String lastName);
-    // public Iterable<Book> findBooksByAuthorFirstName(String name);
-    // public Iterable<Book> findBooksByAuthorFirstNameAndAuthorMidNameAndAuthorLastName(String fn,String mn,String ln);
-    void deleteBookByBookname(String name);
-
+            "(select a.bookId from Authorship a join Author b on a.authorId=b.id where b.firstName=?1 and b.midName=?2 and b.lastName=?3)")
+    public Iterable<Book> findBooksByLastName(String firstName,String midName,String lastName);
     void deleteBookById(Long id);
-
     @Query("select b from Book b where id in (select a.bookId from Authorship a where a.authorId = ?1)")
-    List<Book> findBooksByAuthors(Long authorId);
+    Iterable<Book> findBooksByAuthors(Long authorId);
 }
