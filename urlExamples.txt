@@ -1,0 +1,31 @@
+
+http://localhost:8080/authors/findAll
+http://localhost:8080/authors/findById?id=3
+http://localhost:8080/authors/findByLastName?lastName=??????
+http://localhost:8080/authors/findByTheme?theme=horror
+http://localhost:8080/authors/create?firstName=Ivan&midName=Ivanovic&lastName=Ivanov&birthDate=2011-04-15
+http://localhost:8080/authors/delete?id=2
+http://localhost:8080/authors//update?id=3&firstName=Ivan&midName=Ivanovic&lastName=Ivanov&birthDate=1970-12-05
+
+http://localhost:8080/books/findAll
+http://localhost:8080/books/findByName?name=?????
+http://localhost:8080/books/findByAuthor?firstName=????&midName=????????&lastName=??????
+http://localhost:8080/books/create?name=Book&isbn=123&theme=fantasy&authorId=3
+http://localhost:8080/books/delete?id=1
+http://localhost:8080/books/update?id=8&name=fantasyBook&isbn=321&theme=fantasy&authorID=3
+
+json for post:
+Author
+{
+"firstName":"Alexandr",
+"midName":"Alexandrovic",
+"lastName":"Alexandrov",
+"birthDate":"1970-12-05"
+}
+Book
+{
+ "bookname": "admin",
+ "isbn": "admin",
+ "theme": "Gobinath",
+ "authorsid":[3,5]
+}
