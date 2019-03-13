@@ -49,21 +49,6 @@ public class BookController {
         book.setIsbn(isbn);
         book.setTheme(theme);
         bookRepository.save(book);
-/*        StringTokenizer stk = new StringTokenizer(authorId,",");
-        String []ids = new String[stk.countTokens()];
-
-        Authorship []as = new Authorship[authorshipRepository.countAuthorshipByBookId(id)];
-
-        for(int i = 0; i<ids.length;i++){
-            ids[i]=stk.nextToken();
-            if(authorshipRepository.existsAuthorshipByAuthorIdAndBookId(Long.valueOf(ids[i]),book.getId())){
-            }else{
-                Authorship authorship = new Authorship();
-                authorship.setBookId(book.getId());
-                authorship.setAuthorId(Long.valueOf(ids[i]));
-                authorshipRepository.save(authorship);
-            }
-        }*/
         authorshipRepository.deleteAuthorshipsByBookId(book.getId());
         createAuthorship(book,authorId);
         return "Successfully updated";
@@ -87,7 +72,7 @@ public class BookController {
         return bookRepository.findBookById(book.getId());
     }
 
-    /*    @GetMapping(path="/create")
+        @GetMapping(path="/create")
     public Book create(@RequestParam("name") String name,@RequestParam("isbn") String isbn,
                        @RequestParam("theme") String theme,@RequestParam("authorId") String authorId) {
           Book book = new Book();
@@ -96,9 +81,8 @@ public class BookController {
           book.setTheme(theme);
           bookRepository.save(book);
           createAuthorship(book,authorId);
-
           return bookRepository.findBookById(book.getId());
-    }*/
+    }
 
     private void createAuthorship(Book b,String s){
         StringTokenizer stk = new StringTokenizer(s,",");

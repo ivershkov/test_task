@@ -3,12 +3,10 @@ package com.postgresqlrest.rest.controller;
 import com.postgresqlrest.rest.persistence.entity.Author;
 import com.postgresqlrest.rest.persistence.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/authors")
@@ -24,7 +22,7 @@ public class AuthorController {
     public Author findById(@RequestParam("id") Long id) {return repository.findAuthorById(id);}
 
     @GetMapping(path = "/findByTheme")
-    public Iterable<Author> findByTheme(@RequestParam("theme") String theme) { return repository.findAuthorsByBookTheme(theme);}
+    public Set<Author> findByTheme(@RequestParam("theme") String theme) { return repository.findAuthorsByBookTheme(theme);}
 
     @GetMapping(path = "/findByLastName")
     public Iterable<Author> findByLastName(@RequestParam("lastName") String lastName){ return repository.findAuthorsByLastName(lastName);}
@@ -56,5 +54,10 @@ public class AuthorController {
         author.setBirthDate(birthDate);
         repository.save(author);
         return "Successfully updated";
+    }
+
+    @PostMapping
+    public Author create(@RequestBody Author author){
+        return repository.save(author);
     }
 }
